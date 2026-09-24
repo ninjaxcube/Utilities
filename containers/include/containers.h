@@ -70,6 +70,6 @@ int8_t hashtable_insert(hashtable_t * p_hashtable, void * p_key, void * p_value)
 int8_t hashtable_search(hashtable_t * p_hashtable, void * p_key, void ** pp_value);
 int8_t hashtable_delete(hashtable_t * p_hashtable, void * p_key);
 int8_t hashtable_destroy(hashtable_t ** pp_hashtable);
-uint64_t hash_fnv1a(const void *key, size_t len);
+uint64_t hash_fnv1a(const void *key, uint32_t len);
 
 #endif

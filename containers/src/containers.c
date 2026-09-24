@@ -1,4 +1,4 @@
-#include "containers.h"
+#include "../include/containers.h"
 #include <stdlib.h>
 
 static node_t * node_create(void * p_data)
@@ -14,7 +14,7 @@ static node_t * node_create(void * p_data)
 	return p_node;
 }
 
-static int8_t hash_resize(hashtable_t * p_hashtable, uint32_t new_capacity)
+static int8_t hashtable_resize(hashtable_t * p_hashtable, uint32_t new_capacity)
 {
 	if (NULL == p_hashtable)
 	{
@@ -327,12 +327,12 @@ int8_t queue_dequeue(queue_t * p_queue, void ** p_data)
 	return 0;
 }
 
-uint64_t hash_fnv1a(const void *key, size_t len)
+uint64_t hash_fnv1a(const void *key, uint32_t len)
 {
     const uint8_t *bytes = (const uint8_t *)key;
     uint64_t hash = FNV_OFFSET;
 
-    for (size_t i = 0; i < len; i++) {
+    for (uint32_t i = 0; i < len; i++) {
         hash ^= bytes[i];
         hash *= FNV_PRIME;
     }
@@ -344,7 +344,6 @@ int8_t hashtable_init(hashtable_t ** pp_hashtable,
     hash_function_t hash_func, compare_function_t compare_func)
 {
 	*pp_hashtable = NULL;
-    hashtable_t * p_hashtable = NULL;
 
     if ((NULL == pp_hashtable) || (NULL == hash_func) || (NULL == compare_func))
     {
