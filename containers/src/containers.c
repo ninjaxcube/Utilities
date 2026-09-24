@@ -417,9 +417,9 @@ int8_t hashtable_insert(hashtable_t * p_hashtable, void * p_key, void * p_value)
 	return 0;
 
 }
-int8_t hashtable_search(hashtable_t * p_hashtable, void * p_key, void ** p_data)
+int8_t hashtable_search(hashtable_t * p_hashtable, void * p_key, void ** pp_value)
 {
-	if (NULL == p_hashtable || NULL == p_key || NULL == p_data)
+	if (NULL == p_hashtable || NULL == p_key || NULL == pp_value)
 	{
 		return -1;
 	}
@@ -431,7 +431,7 @@ int8_t hashtable_search(hashtable_t * p_hashtable, void * p_key, void ** p_data)
 	{
 		if (p_hashtable->compare_function(p_entry->p_key, p_key) == 0)
 		{
-			*p_data = p_entry->p_value;
+			*pp_value = p_entry->p_value;
 			return 0;
 		}
 		p_entry = p_entry->p_next;

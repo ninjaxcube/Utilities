@@ -67,7 +67,7 @@ int8_t queue_dequeue(queue_t * p_queue, void ** p_data);
 int8_t hashtable_init(hashtable_t ** pp_hashtable,
     hash_function_t hash_func, compare_function_t compare_func);
 int8_t hashtable_insert(hashtable_t * p_hashtable, void * p_key, void * p_value);
-int8_t hashtable_search(hashtable_t * p_hashtable, void * p_key, void * p_value);
+int8_t hashtable_search(hashtable_t * p_hashtable, void * p_key, void ** pp_value);
 int8_t hashtable_delete(hashtable_t * p_hashtable, void * p_key);
 int8_t hashtable_destroy(hashtable_t ** pp_hashtable);
 uint64_t hash_fnv1a(const void *key, size_t len);
